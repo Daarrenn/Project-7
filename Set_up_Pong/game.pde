@@ -30,6 +30,12 @@ void game(){
   
   //boing
   if(dist(leftx, lefty, ballx, bally) <= leftd/2 + balld/2) { 
+  bx = (leftx-ballx)/10;
+  by = (lefty-bally)/10;
+  }
+  if(dist(rightx, righty, ballx, bally) <= rightd/2 + balld/2) { 
+  bx = (rightx-ballx)/10;
+  by = (righty-bally)/10;
   }
 }
 
