@@ -1,16 +1,37 @@
 void game(){
   background(0);
   
+  fill(255);
+  textSize(50);
+  text(ponescore, width/4, height/6);
+  text(ptwoscore, width*3/4, height/6);
+  
+  //counter
+  countdown = countdown - 1;
+  
+  
+  
    //ball move
+   fill(255);
+   if(countdown < 0){
    ballx = ballx-bx;
    bally = bally-by;
+   }
    
-    
+ 
   //move paddles
-  if(wkey == true) lefty = lefty - 5;
-  if(skey == true) lefty = lefty + 5;
-  if(upkey == true) righty = righty - 5;
-  if(downkey == true) righty = righty + 5;
+  if(lefty>=0){
+    if(wkey == true) lefty = lefty - 10;
+  }
+  if(lefty<=height){
+    if(skey == true) lefty = lefty + 10;
+  }
+  if(righty>=0){
+    if(upkey == true) righty = righty - 10;
+  }
+  if(righty<=height) {
+    if(downkey == true) righty = righty + 10;
+  }
   //paddles
   circle(leftx, lefty, leftd);
   circle(rightx, righty, rightd);
@@ -18,24 +39,54 @@ void game(){
   //ball
   circle(ballx, bally, balld);
   
-  
-  //wall boing
-  
-  if(ballx < balld/2 || ballx > width-balld/2) {
-    bx = bx * -1;
+  //counter
+  fill(0);
+  if(countdown < 181 && countdown > 120) {
+    text("3", width/2, height/2);
   }
+  if(countdown < 121 && countdown > 60) {
+    text("2", width/2, height/2);
+  }
+  if(countdown < 61 && countdown > 0) {
+    text("1", width/2, height/2);
+  }
+  
+  
+  //score
+  
+  if(ballx < balld/2) {
+    ptwoscore = ptwoscore + 1;
+    ballx = width/2;
+    bally = height/2;
+    countdown = 180;
+    bx = 3;
+    by = 0;
+  
+  }
+  if (ballx > width-balld/2) {
+    ponescore = ponescore + 1;
+    ballx = width/2;
+    bally = height/2;
+    countdown = 180;
+    bx = -3;
+    by = 0;
+  }
+  
+  //top bottom walls
   if(bally < balld/2 || bally > height-balld/2) {
     by = by * -1;
   }
   
   //boing
   if(dist(leftx, lefty, ballx, bally) <= leftd/2 + balld/2) { 
-  bx = (leftx-ballx)/10;
-  by = (lefty-bally)/10;
+  bx = ((leftx-ballx)/10)*m;
+  by = ((lefty-bally)/10)*m;
+  m = m + 0.1;
   }
   if(dist(rightx, righty, ballx, bally) <= rightd/2 + balld/2) { 
-  bx = (rightx-ballx)/10;
-  by = (righty-bally)/10;
+  bx = ((rightx-ballx)/10)*m;
+  by = ((righty-bally)/10)*m;
+  m = m + 0.1;
   }
 }
 
