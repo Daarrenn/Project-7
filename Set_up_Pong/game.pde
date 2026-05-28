@@ -26,12 +26,25 @@ void game(){
   if(lefty<=height){
     if(skey == true) lefty = lefty + 10;
   }
+  
+  if(ai == false){
   if(righty>=0){
     if(upkey == true) righty = righty - 10;
   }
   if(righty<=height) {
     if(downkey == true) righty = righty + 10;
   }
+  }
+  
+  if(ai == true){
+    if(bally > righty) {
+      righty = righty + hard;
+    }
+    if(bally < righty) {
+      righty = righty - hard;
+    }
+  }
+  
   //paddles
   circle(leftx, lefty, leftd);
   circle(rightx, righty, rightd);
@@ -40,6 +53,7 @@ void game(){
   circle(ballx, bally, balld);
   
   //counter
+  
   fill(0);
   if(countdown < 181 && countdown > 120) {
     text("3", width/2, height/2);
@@ -61,6 +75,7 @@ void game(){
     countdown = 180;
     bx = 3;
     by = 0;
+    m = 1;
   
   }
   if (ballx > width-balld/2) {
@@ -70,11 +85,20 @@ void game(){
     countdown = 180;
     bx = -3;
     by = 0;
+    m = 1;
   }
   
   //top bottom walls
   if(bally < balld/2 || bally > height-balld/2) {
     by = by * -1;
+  }
+  
+  if(bally < balld/2) {
+    bally = balld/2;
+  }
+  
+  if(bally > height-balld/2) {
+    bally = height-balld/2;
   }
   
   //boing

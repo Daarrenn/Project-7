@@ -3,6 +3,9 @@ final int INTRO = 0;
 final int GAME = 1;
 final int PAUSE = 2;
 final int GAMEOVER = 3;
+final int DIFFICULTY = 4;
+
+color tactileColour = #FF0000;
 
 //moving parts
 float leftx, lefty, leftd, rightx, righty, rightd; //paddles
@@ -12,15 +15,23 @@ float m; // muliplyer ball spped
 //keyboard
 boolean wkey, skey, upkey, downkey;
 
+//robot
+boolean ai;
+float hard;
+
 //scoreeeeeeeeeeeeeeeeeeeeeeeeeeee
 int ponescore;
 int ptwoscore;
 float countdown;
 
+//text
+PFont airStrike;
+
 void setup() {
   size(800, 600);
-  mode = GAME;
+  mode = INTRO;
   textAlign(CENTER, CENTER);
+  airStrike = createFont("airstrike.ttf", 100);
   
   //paddles
   leftx = -10;
@@ -39,6 +50,8 @@ void setup() {
   m = 1;
   
   countdown = 180;
+  
+
 }
 
 void draw() {
@@ -50,7 +63,17 @@ void draw() {
     pause();
   } else if (mode == GAMEOVER){
     gameover();
+  } else if (mode == DIFFICULTY){
+    difficulty();
   } else {
     println("oh no" + mode);
+  }
+}
+
+void squareTactile(int x, int x2, int y, int y2) {
+  if(mouseX > x && mouseX < x2 && mouseY > y && mouseY < y2) {
+    stroke(tactileColour);
+  } else {
+    stroke(0);
   }
 }
