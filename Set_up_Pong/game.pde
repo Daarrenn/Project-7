@@ -2,6 +2,7 @@ void game(){
   background(0);
   
   fill(255);
+  stroke(255);
   textSize(50);
   text(ponescore, width/4, height/6);
   text(ptwoscore, width*3/4, height/6);
@@ -46,8 +47,12 @@ void game(){
   }
   
   //paddles
+  
+  fill(255, 0, 0);
   circle(leftx, lefty, leftd);
+  fill(0, 0, 255);
   circle(rightx, righty, rightd);
+  fill(255);
   
   //ball
   circle(ballx, bally, balld);
@@ -112,8 +117,17 @@ void game(){
   by = ((righty-bally)/10)*m;
   m = m + 0.1;
   }
+  
+  //ending game
+  if(ponescore == 5){
+    mode = GAMEOVER;
+  }
+  if(ptwoscore == 5){
+    mode = GAMEOVER;
+  }
+  
 }
 
 void gameClicks(){
-  
+   mode = PAUSE; 
 }

@@ -19,6 +19,10 @@ boolean wkey, skey, upkey, downkey;
 boolean ai;
 float hard;
 
+//pause
+int countdownPause;
+int counting;
+
 //scoreeeeeeeeeeeeeeeeeeeeeeeeeeee
 int ponescore;
 int ptwoscore;
@@ -51,6 +55,9 @@ void setup() {
   
   countdown = 180;
   
+  //pause
+  
+  
 
 }
 
@@ -59,7 +66,7 @@ void draw() {
     intro();
   } else if (mode == GAME) {
     game();
-  } else if (mode ==  PAUSE){
+  } else if (mode == PAUSE){
     pause();
   } else if (mode == GAMEOVER){
     gameover();

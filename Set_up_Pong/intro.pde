@@ -25,6 +25,9 @@ void introClicks(){
   if(mouseX > 20 && mouseX < 340 && mouseY > 400 && mouseY < 580){
     mode = DIFFICULTY;
     ai = true;
-    hard = 7;
+  }
+  if(mouseX > 460 && mouseX < 780 && mouseY > 400 && mouseY < 580){
+    ai = false;
+    mode = GAME;
   }
 }
