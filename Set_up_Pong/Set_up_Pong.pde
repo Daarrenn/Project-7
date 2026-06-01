@@ -1,3 +1,13 @@
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+
+Minim minim;
+AudioPlayer FAILURE, MUSIC, SUCCESS;
+
 int mode;
 final int INTRO = 0;
 final int GAME = 1;
@@ -53,9 +63,14 @@ void setup() {
   by = 0;
   m = 1;
   
+  //poause
   countdown = 180;
   
-  //pause
+  //minim
+  minim = new Minim(this);
+  FAILURE = minim.loadFile("FAILURE (1).wav");
+  MUSIC = minim.loadFile("MUSIC (1).mp3");
+  SUCCESS = minim.loadFile("SUCCESS (1).wav");
   
   
 

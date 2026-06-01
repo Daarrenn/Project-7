@@ -1,5 +1,7 @@
 void pause(){
   
+  MUSIC.pause();
+  
   fill(255);
   textSize(60);
   text("PAUSED", width/2, height/3 - 30);
@@ -10,6 +12,10 @@ void pause(){
   
   textSize(50);
   if(countdownPause > 0 && countdownPause < 61) {
+     noStroke();
+    fill(0);
+    circle(width/2, height/2, 50);
+    fill(255);
     text("3", width/2, height/2);
   } else if(countdownPause > 60 && countdownPause < 121) {
     noStroke();

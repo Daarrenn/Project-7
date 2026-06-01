@@ -1,6 +1,8 @@
 void game(){
   background(0);
   
+  MUSIC.play();
+  
   fill(255);
   stroke(255);
   textSize(50);
