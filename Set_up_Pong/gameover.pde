@@ -1,4 +1,5 @@
 void gameover(){
+  MUSIC.rewind();
   background(0);
   fill(255);
   textSize(60);

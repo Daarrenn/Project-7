@@ -83,6 +83,14 @@ void game(){
     bx = 3;
     by = 0;
     m = 1;
+    if(ai == true){
+      FAILURE.rewind();
+      FAILURE.play();
+    }
+    if(ai == false) {
+      SUCCESS.rewind();
+      SUCCESS.play();
+    }
   
   }
   if (ballx > width-balld/2) {
@@ -93,6 +101,8 @@ void game(){
     bx = -3;
     by = 0;
     m = 1;
+    SUCCESS.rewind();
+    SUCCESS.play();
   }
   
   //top bottom walls
